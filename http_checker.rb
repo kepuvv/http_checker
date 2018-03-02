@@ -1,5 +1,19 @@
 require 'net/http'
 
+=begin
+
+Another way to check url my_func? == working_url?
+	
+def my_func?(url_test)
+	uri = URI(url_test)
+	res = Net::HTTP.get_response(uri)
+	res.code == '200'
+rescue
+	false
+end
+	
+=end
+
 def working_url?(url_str)
   url = URI.parse(url_str)
   Net::HTTP.start(url.host, url.port) do |http|
